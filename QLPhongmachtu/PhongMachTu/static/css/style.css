@@ -1,0 +1,44 @@
+*{
+    font-family: Montserrat, sans-serif;
+}
+.btn {
+    border-radius: 50px 50px
+}
+.nav-item{
+    padding: 0 50px;
+}
+body {
+    background-color: lightblue;
+    color: darkblue;
+}
+
+
+div > img {
+    width: 100%;
+}
+.sign {
+    width: 28%;
+    border: 10px;
+    position: absolute;
+    bottom: 15px;
+    right: 40px;
+    border: black 1px solid;
+    border-radius: 30px;
+    padding: 5px 15px;
+    background: linear-gradient(180deg, rgba(0, 110, 150, 1), rgba(153, 189, 200, 1.0));
+}
+.img1_form {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.btn-sign  {
+    text-align: center;
+    color: white;
+}
+.form-control {
+    border-radius: 30px;
+    background-color: transparent;
+    color: white;
+}
