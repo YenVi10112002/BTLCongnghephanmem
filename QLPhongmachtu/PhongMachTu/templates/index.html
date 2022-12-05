@@ -14,18 +14,9 @@
 <body>
     <div>
         <nav class="navbar navbar-expand-sm bg-light justify-content-center">
-          <ul class="navbar-nav">
+          <ul class="index-ul navbar-nav" >
             <li class="nav-item">
-              <a class="nav-link" href="#">Tầm quan trọng</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Đối tượng</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Gói khám</a>
-            </li>
-              <li class="nav-item">
-              <a class="nav-link" href="#">Danh mục</a>
+              <a class="nav-link" href="#">Trang chủ</a>
             </li>
           </ul>
           <form class="d-flex">
@@ -38,7 +29,7 @@
             </div>
             <div class="sign">
                 <form action="/action_page.php">
-                  <h5 class="btn-sign">Đăng ký khám</h5>
+                  <h5 class="index-btn-sign">Đăng ký khám</h5>
                   <div class="mb-3 mt-3">
                     <input type="text" class="form-control" id="username" placeholder="Họ và tên" name="username">
                   </div>
@@ -51,7 +42,7 @@
                   <div class="mb-3 mt-3">
                     <input type="text" class="form-control" id="address" placeholder="Địa chỉ" name="address">
                   </div>
-                  <div class="btn-sign">
+                  <div class="index-btn-sign">
                   <button type="submit" class="btn btn-primary">Gửi ngay</button>
                   </div>
                 </form>
@@ -59,20 +50,25 @@
         </div>
         <div class="sign">
             <form action="/action_page.php">
-              <div class="mb-3 mt-3">
-                <label for="name" class="form-label">Tên đăng nhập:</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter email" name="name">
-              </div>
-              <div class="mb-3">
-                <label for="pwd" class="form-label">Mật khẩu:</label>
-                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-              </div>
-              <div class="form-check mb-3">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" name="remember"> Nhớ mật khẩu
-                </label>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+                <h5 class="index-btn-sign ">Đăng ký khám</h5>
+                <div class="mb-3 mt-3">
+                    <div class="index-location">
+                        <label for="name" class="form-label index-location">Tên đăng nhập:</label>
+                    </div>
+                    <input type="text" class="form-control" id="name" placeholder="Enter email" name="name">
+                </div>
+                <div class="mb-3">
+                    <div class="index-location">
+                        <label for="pwd" class="form-label ">Mật khẩu:</label>
+                    </div>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                </div>
+                <div class="form-check mb-3 index-location">
+                    <label class="form-check-label ">
+                      <input class="form-check-input " type="checkbox" name="remember"> Nhớ mật khẩu
+                    </label>
+                </div>
+                <button type="submit" class="index-btn btn-primary">Submit</button>
             </form>
         </div>
     </div>

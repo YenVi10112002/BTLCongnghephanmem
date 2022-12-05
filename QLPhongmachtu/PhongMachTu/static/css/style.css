@@ -1,16 +1,25 @@
 *{
     font-family: Montserrat, sans-serif;
 }
+body {
+    background-color: lightblue;
+    color: darkblue;
+    margin: 0 10%;
+}
+.navbar {
+    background-color: lightblue;
+    color: darkblue;
+}
+.index-ul {
+    width: 80%;
+}
 .btn {
     border-radius: 50px 50px
 }
 .nav-item{
     padding: 0 50px;
 }
-body {
-    background-color: lightblue;
-    color: darkblue;
-}
+
 
 
 div > img {
@@ -26,6 +35,8 @@ div > img {
     border-radius: 30px;
     padding: 5px 15px;
     background: linear-gradient(180deg, rgba(0, 110, 150, 1), rgba(153, 189, 200, 1.0));
+    text-align: center;
+    color: white;
 }
 .img1_form {
     position: relative;
@@ -40,5 +51,39 @@ div > img {
 .form-control {
     border-radius: 30px;
     background-color: transparent;
-    color: white;
 }
+
+.index-location {
+    text-align: left;
+}
+
+
+.d-flex {
+    padding: 5px 15px;
+}
+.doctor_table {
+    display: flex;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.doctor_col70 {
+    width: 70%;
+}
+
+.doctor_col30 {
+    width: 30%;
+}
+
+.doctor_col30 > p {
+    margin: 0;
+}
+
+.doctor_col30_img {
+    height: 250px;
+}
+
+.doctor_col30_img > img {
+    width: 100%;
+}
+
