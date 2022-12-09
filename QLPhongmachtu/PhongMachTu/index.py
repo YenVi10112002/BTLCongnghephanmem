@@ -3,7 +3,7 @@ from PhongMachTu import app
 from flask_login import login_user, logout_user, current_user, login_required
 
 
-@app.route('/')
+@app.route('/', methods=['get', 'post'])
 def home():
     return render_template('index.html')
 
