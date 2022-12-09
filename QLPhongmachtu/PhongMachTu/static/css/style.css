@@ -40,7 +40,7 @@ div > img {
 }
 .img1_form {
     position: relative;
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -56,6 +56,22 @@ div > img {
 .index-location {
     text-align: left;
 }
+
+.login-sign {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.login-sign > .sign {
+    position: unset;
+    width: 70%;
+    margin: 0 auto;
+}
+
+
+
+
+
 
 
 .d-flex {
