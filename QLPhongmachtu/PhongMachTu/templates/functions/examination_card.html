@@ -1,15 +1,19 @@
+
 {% extends 'functions/base.html' %}
 
 {% block header %}
-<nav class="navbar navbar-expand-sm justify-content-center">
+<nav class="navbar navbar-expand-sm  justify-content-center">
     <ul class="index-ul navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="#">Hồ sơ bệnh nhân</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Thanh toán hóa đơn</a>
+            <a class="nav-link" href="#">Hồ sơ khám</a>
         </li>
     </ul>
+    <div class="mb-3 mt-3">
+        <input type="text" class="form-control" id="search" name="search">
+    </div>
+    <form class="d-flex">
+        <button class="btn btn-danger" type="button">Tìm kiếm</button>
+    </form>
     <form class="d-flex">
         <button class="btn btn-danger" type="button">Đăng xuất</button>
     </form>
@@ -18,13 +22,32 @@
     <div class="doctor_col70">
         <table class="table table-bordered">
             <thead>
-            <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
-            </tr>
+                <tr>
+                    <td colspan="3">DANH SÁCH KHÁM</td>
+                </tr>
             </thead>
             <tbody>
+            <tr>
+                <td colspan="2">
+                     <input type="text" class="doctor_date form-control-plaintext" placeholder="Họ và tên:......." >
+                </td>
+                <td>
+                    <input type="text" class="doctor_date form-control-plaintext" placeholder="Ngày khám:......." >
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                     <input type="text" class="doctor_date form-control-plaintext" placeholder="Triệu chứng:......." >
+                </td>
+                <td>
+                    <input type="text" class="doctor_date form-control-plaintext" placeholder="Dự đoán loại bệnh:......." >
+                </td>
+            </tr>
+             <tr>
+                <td>Firstname</td>
+                <td>Lastname</td>
+                <td>Email</td>
+            </tr>
             <tr>
                 <td>John</td>
                 <td>Doe</td>
@@ -57,7 +80,6 @@
             </tr>
             </tbody>
         </table>
-
     </div>
     <div class="doctor_col30 float-right">
         <div class="doctor_col30_img">
@@ -69,10 +91,5 @@
             <p>Chuyên môn:</p>
         </div>
     </div>
-</div>
-<div class="nurse-btnSua">
-    <form class="d-flex">
-        <button class="btn btn-danger" type="button">Chỉnh sửa</button>
-    </form>
 </div>
 {% endblock %}

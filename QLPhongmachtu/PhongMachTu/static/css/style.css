@@ -87,6 +87,11 @@ div > img {
     width: 70%;
 }
 
+.doctor_col70 > .doctor_date   {
+    text-align: center;
+    border: 2px solid #dee2e6
+}
+
 .doctor_col30 {
     width: 30%;
 }
