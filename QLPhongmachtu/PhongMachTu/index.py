@@ -5,7 +5,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 
 @app.route('/', methods=['get', 'post'])
 def home():
-    return render_template('functions/examination_card.html')
+    return render_template('index.html')
 
 
 @app.route("/login", methods=['get', 'post'])
