@@ -3,6 +3,11 @@
 {% block title %}Phòng mạch tư TV{% endblock %}
 
 {% block content %}
+{% if success_msg %}
+<div class="alert alert-success">
+    <h4>{{ success_msg }}</h4>
+</div>
+{% endif %}
 <div>
     <nav class="navbar navbar-expand-sm bg-light justify-content-center" >
         <ul class="index-ul navbar-nav">
@@ -11,7 +16,7 @@
             </li>
         </ul>
         <form class="d-flex">
-            <a class="nav-link" href="{{ url_for('user_login')}}">Đăng nhập</a>
+            <a class="nav-link" href="{{ url_for('home')}}">Đăng nhập</a>
         </form>
     </nav>
     <div class="img1_form">
@@ -19,7 +24,7 @@
             <img src="{{ url_for('static', filename='images/index_1.png')}}" class="rounded" alt="Cinque Terre">
         </div>
         <div class="sign">
-            <form action="{{ url_for('home') }}">
+            <form method="post" action="{{ url_for('home') }}">
                 <h5 class="index-btn-sign">Đăng ký khám</h5>
                 <div class="mb-3 mt-3">
                     <input type="text" class="form-control" id="username" placeholder="Họ và tên" name="username" required>
@@ -28,7 +33,7 @@
                     <input type="text" class="form-control" id="gender" placeholder="Giới tính" name="gender" required>
                 </div>
                 <div class="mb-3 mt-3">
-                    <input type="text" class="form-control" id="year" placeholder="Năm sinh" name="year" required>
+                    <input type="date" class="form-control" id="year" placeholder="Năm sinh" name="year" required>
                 </div>
                 <div class="mb-3 mt-3">
                     <input type="text" class="form-control" id="address" placeholder="Địa chỉ" name="address" required>
@@ -36,11 +41,11 @@
                 <div class="index-btn-sign">
                     <button type="submit" class="btn btn-primary">Gửi ngay</button>
                 </div>
+
             </form>
         </div>
     </div>
 
 </div>
-
 
 {% endblock %}
