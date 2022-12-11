@@ -1,3 +1,4 @@
+import hashlib
 from sqlalchemy import Column, Integer, String, Text, Boolean, Float, ForeignKey, Enum, DateTime
 from sqlalchemy.orm import relationship, backref
 from PhongMachTu import app, db
@@ -22,6 +23,7 @@ class Admin(BaseModel):
 
     name = Column(String(50), nullable=False)
     major = Column(String(50), nullable=False)
+    password = Column(String(100))
     patients = relationship('Patient', backref='admin', lazy=False)
 
     def __str__(self):
@@ -46,3 +48,13 @@ class Patient(BaseModel):
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
+        password1 = str(hashlib.md5('1'.encode('utf-8')).hexdigest())
+        password2 = str(hashlib.md5('2'.encode('utf-8')).hexdigest())
+        password3 = str(hashlib.md5('3'.encode('utf-8')).hexdigest())
+        admin1 = Admin(name='doctor', major='Doctor', password=password1)
+        admin2 = Admin(name='nurse', major='nurse', password=password2)
+        admin3 = Admin(name='manager', major='manager', password=password3)
+        db.session.add(admin1)
+        db.session.add(admin2)
+        db.session.add(admin3)
+        db.session.commit()

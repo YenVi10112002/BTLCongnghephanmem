@@ -2,6 +2,13 @@
 
 {% block title %} Đăng nhập {% endblock %}
 {% block content %}
+
+{% if err_msg %}
+<div class="alert alert-danger">
+    <h4>{{ err_msg }}</h4>
+</div>
+{% endif %}
+
 <div>
     <nav class="navbar navbar-expand-sm bg-light justify-content-center">
         <ul class="index-ul navbar-nav" >
@@ -9,13 +16,13 @@
               <a class="nav-link" href="/">Trang chủ</a>
             </li>
         </ul>
-<!--        <form class="d-flex">-->
-<!--            <a class="nav-link" href="{{ url_for('user_login')}}">Đăng nhập</a>-->
-<!--        </form>-->
+        <form class="d-flex">
+            <a class="nav-link" href="/login">Đăng nhập</a>
+        </form>
     </nav>
     <div class="login-sign">
         <div class="sign">
-            <form action="/action_page.php">
+            <form method="post" action="/login">
                 <h5>Đăng nhập</h5>
                 <div class="mb-3 mt-3">
                     <div class="index-location">
@@ -25,9 +32,9 @@
                 </div>
                 <div class="mb-3">
                     <div class="index-location">
-                        <label for="pwd" class="form-label ">Mật khẩu:</label>
+                        <label for="password" class="form-label ">Mật khẩu:</label>
                     </div>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                    <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
                 </div>
                 <div class="form-check mb-3 index-location">
                     <label class="form-check-label ">

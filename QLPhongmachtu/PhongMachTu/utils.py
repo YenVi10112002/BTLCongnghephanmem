@@ -1,5 +1,5 @@
 from PhongMachTu import db
-from PhongMachTu.models import Admin, Patient
+from PhongMachTu.models import Patient
 
 
 def add_patient(username, gender, year, address):
@@ -12,6 +12,3 @@ def add_patient(username, gender, year, address):
     db.session.commit()
 
 
-def login_admin(name, major):
-    admin = Admin(name=name.strip(),
-                  major=major.strip())
