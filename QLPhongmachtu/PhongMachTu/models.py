@@ -1,4 +1,6 @@
 import hashlib
+
+import self as self
 from sqlalchemy import Column, Integer, String, Text, Boolean, Float, ForeignKey, Enum, DateTime
 from sqlalchemy.orm import relationship, backref
 from PhongMachTu import app, db
@@ -40,6 +42,23 @@ class Patient(BaseModel):
     joined_date = Column(DateTime, default=datetime.now())
     # user_role = Column(Enum(UserRole), default=UserRole.USER)
     doctor_id = Column(Integer, ForeignKey(Admin.id))
+
+    def __str__(self):
+        return self.name
+
+
+# class list(Patient):
+#     __tablename__ = 'list'
+#
+#     day = Column(DateTime)
+#
+#     def __str__(self):
+#         return self.name
+
+class list(BaseModel):
+    __tablename__ = 'list'
+
+    day = Column(DateTime)
 
     def __str__(self):
         return self.name
