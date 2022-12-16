@@ -24,7 +24,7 @@ class Admin(BaseModel):
     name = Column(String(50), nullable=False)
     major = Column(String(50), nullable=False)
     password = Column(String(100))
-    patients = relationship('Patient', backref='admin', lazy=False)
+    # patients = relationship('Patient', backref='admin', lazy=False)
 
     def __str__(self):
         return self.name
@@ -39,7 +39,17 @@ class Patient(BaseModel):
     address = Column(String(100), nullable=False)
     joined_date = Column(DateTime, default=datetime.now())
     # user_role = Column(Enum(UserRole), default=UserRole.USER)
-    doctor_id = Column(Integer, ForeignKey(Admin.id))
+    admin_id = Column(Integer, ForeignKey(Admin.id))
+
+    def __str__(self):
+        return self.name
+
+
+class Card(BaseModel):
+    __tablename__ = 'Card'
+
+    patient_date = Column(String(50))
+    patient_id = Column(Integer, ForeignKey(Patient.id))
 
     def __str__(self):
         return self.name
@@ -57,4 +67,9 @@ if __name__ == '__main__':
         db.session.add(admin1)
         db.session.add(admin2)
         db.session.add(admin3)
+
+        patient = Patient(username='Thanh', gender='Female', year=2002, address="HJHJHẤDNSV DSVJDSV")
+        patient1 = Patient(username='Vi', gender='Female', year=2002, address="HJHJHẤDNSV DSVJDSV")
+        db.session.add(patient)
+        db.session.add(patient1)
         db.session.commit()
