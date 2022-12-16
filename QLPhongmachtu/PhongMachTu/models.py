@@ -1,6 +1,5 @@
 import hashlib
 
-import self as self
 from sqlalchemy import Column, Integer, String, Text, Boolean, Float, ForeignKey, Enum, DateTime
 from sqlalchemy.orm import relationship, backref
 from PhongMachTu import app, db
@@ -56,14 +55,6 @@ class Card(BaseModel):
     def __str__(self):
         return self.name
 
-
-# class list(Patient):
-#     __tablename__ = 'list'
-#
-#     day = Column(DateTime)
-#
-#     def __str__(self):
-#         return self.name
 
 class list(BaseModel):
     __tablename__ = 'list'

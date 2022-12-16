@@ -49,13 +49,10 @@
                     <form class="d-flex">
                         <a id="{{ p.id }}" class="btn btn-danger" href="{{ url_for('card', patient_id = p.id) }}">Lập
                             phiếu khám</a>
-                        <!-- <button class="btn btn-danger" type="button" onclick="({{ p.name }})"><a href="/create?patient_id={{ p.id }}'">Lập phiếu khám</a></button>-->
                     </form>
                 </td>
             </tr>
             {% endfor %}
-
-
             </tbody>
         </table>
     </div>

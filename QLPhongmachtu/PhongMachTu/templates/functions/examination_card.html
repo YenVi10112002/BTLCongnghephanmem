@@ -20,11 +20,11 @@
 </nav>
 <div class="doctor_table">
     <div class="doctor_col70">
-        <form method="post" action="{{ url_for('add_patient_date', patient_id = patient.id) }}">
+        <form method="post" action="{{ url_for('add_patient_date_doctor', patient_id = patient.id) }}">
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <td colspan="3">DANH SÁCH KHÁM</td>
+                    <td colspan="5">DANH SÁCH KHÁM</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,24 +32,22 @@
                     <td colspan="3">
                         <p>Họ tên: {{ patient.username }} </p>
                     </td>
-                    <td>
+                    <td colspan="3">
                         <span>Ngày khám: </span>
                         <div class="mb-3 mt-3">
                             <input type="text" class="form-control" id="patient_date" placeholder="...."
                                    name="patient_date" required>
                         </div>
                     </td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td colspan="3">
                         <input type="text" class="doctor_date form-control-plaintext" placeholder="Triệu chứng:.......">
                     </td>
-                    <td>
+                    <td colspan="2">
                         <input type="text" class="doctor_date form-control-plaintext"
                                placeholder="Dự đoán loại bệnh:.......">
                     </td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>STT</td>
@@ -58,27 +56,19 @@
                     <td>Email</td>
                     <td>Email</td>
                 </tr>
-                <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-
-                </tr>
-                <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-
-                </tr>
-                <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-
-                </tr>
-
                 </tbody>
             </table>
+            <form action="/action_page.php">
+                    <label for="cars">Choose a car:</label>
+                    <select name="cars" id="cars">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                    <br><br>
+                    <input type="submit" value="Submit">
+                </form>
             <div class="index-btn-sign">
                 <button type="submit" class="btn btn-primary">Cập nhật</button>
             </div>

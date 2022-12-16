@@ -28,9 +28,34 @@ def home():
     return render_template('index.html', success_msg=success_msg)
 
 
-# @app.route("/login", methods=['get', 'post'])
-# def user_login():
-#     return render_template('functions/login.html')
+@app.route("/create")
+def create():
+    patient_id = request.args.get("id")
+    patient = utils.load_patient(patient_id=patient_id)
+    return render_template("functions/doctor.html", patient=patient)
+
+
+@app.route("/card/<int:patient_id>", methods=['get', 'post'])
+def card(patient_id):
+    # patient_id = request.args.get("p.id")
+    patient = utils.get_user_by_id(patient_id=patient_id)
+    return render_template("functions/examination_card.html", patient=patient)
+
+
+@app.route("/add_patient_date/<int:patient_id>", methods=['get', 'post'])
+def add_patient_date_doctor(patient_id):
+    msg = ''
+    if request.method.__eq__('POST'):
+        patient_date = request.form.get("patient_date")
+        # p_id = request.args.get("patient_id")
+        # patient = utils.get_user_by_id(patient_id=patient_id)
+        try:
+            # patient.patient_date = patient_date
+            utils.add_card_doctor(patient_date=patient_date, patient_id=patient_id)
+            msg = 'Thanh cong'
+        except:
+            msg = 'Khong thanh cong'
+    return render_template('functions/doctor.html', msg=msg)
 
 
 @app.route("/login", methods=['get', 'post'])
@@ -79,6 +104,7 @@ def pay():
     return render_template('functions/pay.html')
 
 
+# nurse
 @app.route("/add_patient_date", methods=['get', 'post'])
 def add_patient_date():
     msg = ''
@@ -91,7 +117,6 @@ def add_patient_date():
         except:
             msg = 'Khong thanh cong'
     return render_template('functions/nurse.html', msg=msg)
-
 
 
 if __name__ == '__main__':
