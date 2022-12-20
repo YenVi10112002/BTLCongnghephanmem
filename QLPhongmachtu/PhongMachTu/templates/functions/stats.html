@@ -1,0 +1,46 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+<h1 class="text-center text-success">THÔNG KÊ VÀ BÁO CÁO</h1>
+
+<div class="row">
+    <div class="col-md-5 col-sm-12">
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Tên sản phẩm</th>
+                <th>Doanh thu</th>
+            </tr>
+            {% for s in stats %}
+            <tr>
+                <td>{{ s[0] }}</td>
+                <td>{{ s[1] }}</td>
+                <td>{{ s[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="col-md-7 col-sm-12">
+        <form>
+            <div class="form-group">
+                <input type="text" name="sign_date" class="form-control" placeholder="Nhập ngày..." />
+            </div>
+        </form>
+        <canvas id="revenueStats"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/my-chart.js') }}"></script>
+<script>
+    let labels = []
+    let data = []
+    {% for s in stats %}
+    labels.push('{{ s[1] }}')
+    data.push({{ s[2] }})
+    {% endfor %}
+    window.onload = function() {
+        drawRevenueChart(labels, data)
+    }
+</script>
+{% endblock %}

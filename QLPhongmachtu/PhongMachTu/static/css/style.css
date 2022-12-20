@@ -110,3 +110,27 @@ div > img {
     width: 100%;
 }
 
+.row {
+width: 100%;
+margin: 0 auto;
+display: flex;
+align-items: center;
+}
+
+.row > div {
+    width: 20%;
+}
+
+.row > input {
+    width: 20%;
+}
+.row > div > input{
+    width: 100%;
+}
+
+.row > div > select {
+     width: 100%;
+}
+form.add {
+    width: 100%;
+}

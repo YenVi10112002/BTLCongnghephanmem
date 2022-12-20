@@ -1,0 +1,27 @@
+{% extends 'functions/doctor.html' %}
+
+{% block content %}
+<h1 class="subject">Danh mục bệnh nhân</h1>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Date of Birth</th>
+        <th>Address</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for p in patient %}
+            <tr>
+                <td >{{ p.id }}</a></td>
+                <td>{{ p.username }}</td>
+                <td>{{ p.gender }}</td>
+                <td>{{ p.year }}</td>
+                <td>{{ p.address }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,11 +1,15 @@
 {% extends 'functions/base.html' %}
 
 {% block header %}
-
+{% if msg_err %}
+<div class="alert alert-danger">
+    <h4>{{ msg_err }}</h4>
+</div>
+{% endif %}
 <nav class="navbar navbar-expand-sm  justify-content-center">
     <ul class="index-ul navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('create') }}">Hồ sơ khám</a>
+            <a class="nav-link" href="{{ url_for('create', admin_id=admin_id) }}">Hồ sơ khám</a>
         </li>
     </ul>
     <div class="mb-3 mt-3">
@@ -15,16 +19,16 @@
         <button class="btn btn-danger" type="button">Tìm kiếm</button>
     </form>
     <form class="d-flex">
-        <button class="btn btn-danger" type="button">Đăng xuất</button>
+        <a class="btn btn-danger" href="{{url_for('logout')}}">Đăng xuất</a>
     </form>
 </nav>
 <div class="doctor_table">
     <div class="doctor_col70">
-        <form method="post" action="{{ url_for('add_patient_date_doctor', patient_id = patient.id) }}">
-            <table class="table table-bordered">
+        <form method="post" action="{{ url_for('add_card_doctor', patient_id = patient.id, admin_id=admin_id) }}">
+            <table class="table table-bordered" id="sampleTable">
                 <thead>
                 <tr>
-                    <td colspan="5">DANH SÁCH KHÁM</td>
+                    <td colspan="5">PHIẾU KHÁM</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,48 +39,64 @@
                     <td colspan="3">
                         <span>Ngày khám: </span>
                         <div class="mb-3 mt-3">
-                            <input type="text" class="form-control" id="patient_date" placeholder="...."
-                                   name="patient_date" required>
+                            <p type="text" class="form-control" id="patient_date"
+                                   name="patient_date">12/12/2022</p>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <input type="text" class="doctor_date form-control-plaintext" placeholder="Triệu chứng:.......">
+                        <input id="symptom" name="symptom" type="text" class="doctor_date form-control-plaintext" required placeholder="Triệu chứng:.......">
                     </td>
                     <td colspan="2">
-                        <input type="text" class="doctor_date form-control-plaintext"
+                        <input id="predict" name="predict" type="text" class="doctor_date form-control-plaintext" required
                                placeholder="Dự đoán loại bệnh:.......">
                     </td>
                 </tr>
                 <tr>
-                    <td>STT</td>
-                    <td>Ten thuoc</td>
-                    <td>Email</td>
-                    <td>Email</td>
-                    <td>Email</td>
+                    <td>Tên thuốc</td>
+                    <td>Đơn vị</td>
+                    <td>Số lượng</td>
+                    <td>Cách dùng</td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>
-            <form action="/action_page.php">
-                    <label for="cars">Choose a car:</label>
-                    <select name="cars" id="cars">
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
+            <div class="medicineArea">
+            </div>
+            <div>
+                <div class="row">
+                <div>
+                    <select id="medicineId">
+                        <option value="Atropin sulfat"> Atropin sulfat</option>
+                        <option value="Acetylsalicylic acid"> Acetylsalicylic acid</option>
+                        <option value="Meloxicam"> Meloxicam</option>
+                        <option value="Paracetamol (acetaminophen)">Paracetamol (acetaminophen)</option>
+                        <option value="Spironolacton"> Spironolacton</option>
                     </select>
-                    <br><br>
-                    <input type="submit" value="Submit">
-                </form>
-            <div class="index-btn-sign">
-                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                </div>
+                    <div>
+                        <select id="typeId">
+                            <option>Vỉ</option>
+                            <option>Viên</option>
+                            <option>Chai</option>
+                        </select>
+                    </div>
+                    <div><input id="amountId" type="number" placeholder="số lượng" required></div>
+                    <div><input id="instructionId" type="text" placeholder="cách dùng" required></div>
+                    <input type="button" id="btnAdd" class="btn btn-primary" value="Add">
+                </div>
+                </div>
+             <div class="index-btn-sign">
+                <button type="submit" class="btn btn-primary" >Cập nhật</button>
             </div>
         </form>
     </div>
     <div class="doctor_col30 float-right">
         <div class="doctor_col30_img">
-            <img src="images/index_1.png" alt="ava"/>
+            <div class="img1">
+                <img src="{{ url_for('static', filename='images/index_1.png')}}" class="rounded" alt="Cinque Terre">
+            </div>
         </div>
         <div>
             <p>Tên: Lê Văn Lâm</p>
@@ -85,5 +105,4 @@
         </div>
     </div>
 </div>
-<script src="static/js/cart.js"></script>
 {% endblock %}

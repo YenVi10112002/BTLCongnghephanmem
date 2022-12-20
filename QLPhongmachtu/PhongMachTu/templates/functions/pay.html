@@ -4,14 +4,14 @@
 <nav class="navbar navbar-expand-sm justify-content-center">
     <ul class="index-ul navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="#">Hồ sơ bệnh nhân</a>
+            <a class="nav-link" href="{{url_for('list')}}">Hồ sơ bệnh nhân</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Thanh toán hóa đơn</a>
+            <a class="nav-link" href="{{url_for('pay')}}">Thanh toán hóa đơn</a>
         </li>
     </ul>
     <form class="d-flex">
-        <button class="btn btn-danger" type="button">Đăng xuất</button>
+        <a class="btn btn-danger" href="{{url_for('logout')}}">Đăng xuất</a>
     </form>
 </nav>
 <div class="doctor_table">
@@ -19,70 +19,39 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
+                <th>STT</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Date of Birth</th>
+                <th>Address</th>
+                <th>Sign_date</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
+            {% for p in patient %}
             <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
+                <td>{{ p.id }}</td>
+                <td>{{ p.username }}</td>
+                <td>{{ p.gender }}</td>
+                <td>{{ p.year }}</td>
+                <td>{{ p.address }}</td>
+                <td>{{ p.sign_date}}</td>
                 <td>
                     <form class="d-flex">
-                        <button class="btn btn-danger" type="button">Thanh toán</button>
+                        <a class="btn btn-danger" href="{{ url_for('bill', patient_id = p.id)}}">Thanh toán</a>
                     </form>
                 </td>
             </tr>
-            <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-                <td>
-                    <form class="d-flex">
-                        <button class="btn btn-danger" type="button">Thanh toán</button>
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-                <td>
-                    <form class="d-flex">
-                        <button class="btn btn-danger" type="button">Thanh toán</button>
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-                <td>
-                    <form class="d-flex">
-                        <button class="btn btn-danger" type="button">Thanh toán</button>
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-                <td>
-                    <form class="d-flex">
-                        <button class="btn btn-danger" type="button">Thanh toán</button>
-                    </form>
-                </td>
-            </tr>
+            {% endfor %}
             </tbody>
         </table>
-
     </div>
     <div class="doctor_col30 float-right">
         <div class="doctor_col30_img">
-            <img src="images/index_1.png" alt="ava"/>
+            <div class="img1">
+                <img src="{{ url_for('static', filename='images/index_1.png')}}" class="rounded" alt="Cinque Terre">
+            </div>
         </div>
         <div>
             <p>Tên: Lê Văn Lâm</p>
