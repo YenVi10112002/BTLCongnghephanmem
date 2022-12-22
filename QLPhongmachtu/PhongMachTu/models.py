@@ -41,7 +41,7 @@ class Patient(BaseModel, UserMixin):
     address = Column(String(100), nullable=False)
     sign_date = Column(String(100), nullable=False)
     admin_id = Column(Integer, ForeignKey(Admin.id), nullable=True)
-    cards = relationship('Card', backref='patient', lazy=False)
+    cards = relationship('Card', backref='patient', lazy=True)
     bill_id = relationship('Bill', backref='patient', lazy=True)
 
     def __str__(self):
@@ -55,7 +55,9 @@ class Container(BaseModel):
     type = Column(String(50), nullable=False)
     amount = Column(String(50), nullable=False)
     instruction = Column(String(50), nullable=False)
+    price = Column(String(50), default=1000)
     cards = relationship('Card', backref='container', lazy=False)
+
     def __str__(self):
         return self.name
 
@@ -68,6 +70,7 @@ class Card(BaseModel):
     predict_medicine = Column(String(50), nullable=False)
     card_medicine = relationship('Card_Medicine', backref='card', lazy=True)
     container_id = Column(Integer, ForeignKey(Container.id), nullable=True)
+
     def __str__(self):
         return self.name
 
@@ -114,18 +117,15 @@ if __name__ == '__main__':
         db.create_all()
         password1 = str(hashlib.md5('1'.encode('utf-8')).hexdigest())
         password2 = str(hashlib.md5('2'.encode('utf-8')).hexdigest())
-        password3 = str(hashlib.md5('3'.encode('utf-8')).hexdigest())
         admin1 = Admin(name='doctor', major='Doctor', password=password1)
         admin2 = Admin(name='nurse', major='nurse', password=password2)
-        admin3 = Admin(name='manager', major='manager', password=password3)
         db.session.add(admin1)
         db.session.add(admin2)
-        db.session.add(admin3)
 
-        patient = Patient(username='Thanh', gender='Female', year=2002, address="HJHJHẤDNSV DSVJDSV",
+        patient = Patient(username='Thanh', gender='Female', year=2002, address="1 Nguyễn Văn Qúa",
                           sign_date="19/12/2022")
-        patient1 = Patient(username='Vi', gender='Female', year=2002, address="HJHJHẤDNSV DSVJDSV",
-                           sign_date="19/12/2022")
+        patient1 = Patient(username='Vi', gender='Female', year=2002, address="2 Vườn Lài",
+                           sign_date="18/12/2022")
         db.session.add(patient)
         db.session.add(patient1)
 
@@ -135,14 +135,12 @@ if __name__ == '__main__':
         container3 = Container(name="Paracetamol (acetaminophen)", type="vỉ", amount=500, instruction="dùng để uống")
         container4 = Container(name="Spironolacton", type="viên", amount=500, instruction="dùng để uống")
 
-        # medicine = Medicine(name="Atropin sulfat")
-        # medicine1 = Medicine(name="Acetylsalicylic acid")
-        # medicine2 = Medicine(name="Meloxicam")
-        # medicine3 = Medicine(name="Paracetamol (acetaminophen)")
-        # medicine4 = Medicine(name="Spironolacton")
+        define = Define(amount_bn="30", money="100000")
+
         db.session.add(container)
         db.session.add(container1)
         db.session.add(container2)
         db.session.add(container3)
         db.session.add(container4)
+        db.session.add(define)
         db.session.commit()

@@ -1,7 +1,7 @@
-from sqlalchemy import func, extract
+from sqlalchemy import func, extract, select
 
 from PhongMachTu import db, app
-from PhongMachTu.models import Patient, Card, Medicine, Card_Medicine, Admin, Container, Bill
+from PhongMachTu.models import Patient, Card, Medicine, Card_Medicine, Admin, Container, Bill, Define
 
 
 def load_admin():
@@ -127,3 +127,32 @@ def stats_revenue(sign_date=None):
     print(sign_date)
     return query.group_by(Patient.sign_date, Bill.id).all()
 
+
+def register(name, password):
+    admin = Admin(name=name,
+                  password=password)
+
+    db.session.add(admin)
+    db.session.commit()
+
+
+def money_test(define_id):
+    return Define.query.get(define_id)
+
+
+def get_container_by_name(name):
+    return Container.query.filter(name)
+
+
+def get_card_medicine_by_card_id(card_id):
+    return Card_Medicine.query.filter(card_id)
+
+
+def get_card_by_patient_id(patient_id):
+    return Card.query.filter(patient_id)
+
+
+# def name()
+#     query = db.session.query(price
+#     from Medicine
+#     where amount > 10

@@ -41,19 +41,19 @@ def create(admin_id):
     return render_template("functions/doctor.html", patient=patient, admin_id=admin_id)
 
 
-@app.route("/patients")
-def patient():
+@app.route("/patients/<int:admin_id>")
+def patient(admin_id):
     username = request.args.get("username")
-    patient = utils.get_patient_by_name(username=username)
-    return render_template("functions/info.html", patient=patient)
+    patients = utils.get_patient_by_name(username=username)
+    return render_template("functions/info.html", patient=patients, admin_id=admin_id)
 
 
 # tìm thuốc
-@app.route("/search")
-def search():
+@app.route("/search/<int:admin_id>")
+def search(admin_id):
     name = request.args.get("name")
     container = utils.container(name=name)
-    return render_template("functions/info_medicine.html", container=container)
+    return render_template("functions/info_medicine.html", container=container, admin_id=admin_id)
 
 
 @app.route("/loc")
@@ -138,15 +138,29 @@ def edit():
 
 @app.route("/bill/<int:patient_id>")
 def bill(patient_id):
+    define_id = 1
+    define = utils.money_test(define_id=define_id)
+    # c = utils.get_card_by_patient_id(patient_id)
+    # card_id = c.card_id
+    # m = utils.get_card_medicine_by_card_id(card_id)
+    # # số lượng mỗi loại thuốc
+    # a = m.medicine_id.amount
+    # # tên thuốc
+    # t = m.medicine_id.name
+    # money = utils.get_container_by_name(t)
+    # money_medicine = a * money
+
     pa = utils.get_user_by_id(patient_id=patient_id)
-    return render_template("functions/reciepts.html", patient=pa)
+    return render_template("functions/reciepts.html", patient=pa, define=define)
 
 
 @app.route("/bill/<int:patient_id>", methods=['get', 'post'])
 def save_bill(patient_id):
     msg=''
     if request.method.__eq__('POST'):
-        money_test = request.form["money_test"]
+        define_id = 1
+        define = utils.money_test(define_id=define_id)
+        money_test = define.money
         money_medicine = request.form["money_medicine"]
         total = request.form["total"]
 

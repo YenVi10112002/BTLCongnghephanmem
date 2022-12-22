@@ -12,7 +12,7 @@
             <a class="nav-link" href="{{ url_for('create', admin_id=admin_id) }}">Hồ sơ khám</a>
         </li>
     </ul>
-    <form class="d-flex" action="/search" style="width:80%">
+    <form class="d-flex" action="{{ url_for('search', admin_id=admin_id) }}" style="width:80%">
         <div class="mb-3 mt-3" style="width:50%">
             <input type="text" style="width:100%" class="form-control" id="name" name="name" placeholder="Nhập tên thuốc">
         </div >
@@ -21,10 +21,10 @@
         </div>
     </form>
 
-    <form class="d-flex" action="/patients" style="width:90%">
+    <form class="d-flex" action="{{ url_for('patient', admin_id=admin_id) }}" style="width:90%">
         <div class="mb-3 mt-3" style="width:50%">
             <input type="text" class="form-control" style="width:100%" id="username" name="username" placeholder="Nhập tên bệnh nhân">
-        </div >
+        </div>
         <div class="mb-3 mt-3">
             <button class="btn btn-danger" type="submit">Tra cứu bệnh nhân</button>
         </div>
